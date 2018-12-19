@@ -38,15 +38,4 @@ public class MartingaleStrategy extends TemplateStrategy {
 		}
 	}
 
-	@Override
-	public boolean buySignal() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean sellSignal() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

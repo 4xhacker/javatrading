@@ -3,6 +3,7 @@ package com.compica.javatrading.guppy;
 import java.io.IOException;
 import java.util.Date;
 
+import com.compica.javatrading.common.TemplateStrategy;
 import com.jfx.AppliedPrice;
 import com.jfx.ErrAccountDisabled;
 import com.jfx.ErrCommonError;
@@ -49,11 +50,9 @@ import com.jfx.SelectionPool;
 import com.jfx.SelectionType;
 import com.jfx.Timeframe;
 import com.jfx.TradeOperation;
-import com.jfx.strategy.OrderInfo;
-import com.jfx.strategy.Strategy;
 import com.jfx.strategy.StrategyRunner;
 
-public class GuppyStrategy extends Strategy {
+public class GuppyStrategy extends TemplateStrategy {
 	private static final double LOT_SIZE = 1.0;
 	Guppy guppy = new Guppy();
 	private Date lastBarTimeStamp;
@@ -69,6 +68,9 @@ public class GuppyStrategy extends Strategy {
 	public void init(String symbol, int period, StrategyRunner strategyRunner) {
 		try {
 			super.init(symbol, period, strategyRunner);
+			tradingSignal.buySignalMap.put(RulesEnum.ALIGN_MOVING_AVERAGE.getRule(), false);
+			tradingSignal.buySignalMap.put("stochaticOverSold",false);
+			
 		} catch (ErrUnknownSymbol e) {
 
 			e.printStackTrace();
@@ -82,7 +84,6 @@ public class GuppyStrategy extends Strategy {
 	}
 	@Override
 	public void deinit() {
-		// release resources on EA exit
 	}
 
 	boolean isNewBar() throws ErrHistoryWillUpdated, ErrUnknownSymbol {

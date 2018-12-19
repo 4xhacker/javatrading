@@ -9,15 +9,17 @@ import com.jfx.MarketInfo;
 import com.jfx.strategy.Strategy;
 import com.jfx.strategy.StrategyRunner;
 
-public abstract class TemplateStrategy extends Strategy implements TradingSignal{
+public abstract class TemplateStrategy extends Strategy {
 
 	private double pointValue;
 	public TimeSerie timeSerie;
 	public TradeManagement trademanagement;
+	public TradingSignal tradingSignal;
 	
 	public TemplateStrategy() {
 		timeSerie = new TimeSerie();
 		trademanagement = new TradeManagement();
+		tradingSignal = new TradingSignal();
 	}
 
 	@Override
