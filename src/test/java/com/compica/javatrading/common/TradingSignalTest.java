@@ -9,7 +9,7 @@ import com.compica.javatrading.guppy.RulesEnum;
 public class TradingSignalTest {
 
 	@Test
-	public void testAllRulesAreFalse() {
+	public void testAllBuyingRulesAreFalse() {
 		TradingSignal ts = new TradingSignal();
 		ts.buySignalMap.put(RulesEnum.ALIGN_MOVING_AVERAGE.getRule(), false);
 		
@@ -19,7 +19,7 @@ public class TradingSignalTest {
 	}
 	
 	@Test
-	public void testAllRulesAreTrue() {
+	public void testAllBuyingRulesAreTrue() {
 		TradingSignal ts = new TradingSignal();
 		ts.buySignalMap.put(RulesEnum.ALIGN_MOVING_AVERAGE.getRule(), true);
 		
